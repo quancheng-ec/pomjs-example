@@ -4,7 +4,7 @@
 
 const context = {
     title: "exmple"
-}
+};
 
 
 

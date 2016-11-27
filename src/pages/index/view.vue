@@ -19,9 +19,6 @@
 
         },
         mounted(){
-         if(console&&this.result.message){
-                console.log('login error:',this.result.message);
-           }
         },
         methods: {
 
@@ -31,8 +28,12 @@
 
 
 
+
 </script>
 
 <style scoped>
+    body{
+        color:red;
+    }
 
 </style>
