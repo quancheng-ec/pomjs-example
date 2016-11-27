@@ -1,13 +1,11 @@
 <template>
-    <div id="wrapper">
-        Hello {{ message }}
-
+    <div >
+        Hello  item
     </div>
 
 </template>
 
 <script>
-
 
     export default{
 
