@@ -1,30 +1,21 @@
-FROM yingjunjiao/runtime-image
+FROM quancheng/runtime-image:1.1
+
+ADD /config /root/config
+ADD /layouts /root/layouts
+ADD /src /root/src
+ADD /static /root/static
+ADD /service-all /root/service-all
+
+ADD fetch_service.sh /root
+ADD .babelrc /root
+ADD package.json /root
 
 
-ADD node_modules /root/node_modules
-ADD bundle /root/bundle
-ADD config /root/config
-ADD dist /root/dist
-ADD layouts /root/layouts
-ADD src /root/src
-ADD static /root/static
-ADD .babelrc /root/.babelrc
-ADD package.json /root/package.json
-ADD vue_build.json /root/vue_build.json
-
-
-
-## 健康检查
-#HEALTHCHECK --interval=10s --timeout=1s --retries=3 CMD curl -f http://localhost ||  exit 1
 WORKDIR /root
+RUN cnpm install && rm -rf /root/.npm*
+RUN npm run build
 
+ADD start.sh /root
 
-CMD npm run build && npm run server
-
-
-
-
-
-
-
+CMD ["./start.sh"]
 
